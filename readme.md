@@ -8,6 +8,8 @@
 4)  Enter node BamazonCustomer.js at the prompt.
 5)  Buy the finest items from my store.
 
+###This database will only function with a host name of localhost, a port of 3306, a user name root, and a password root.
+
 ##How to Make it Functional as a Manager:
 1)  Open Bamazon database.sql in mysql.
 2)  Run Bamazon database.sql.
