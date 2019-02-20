@@ -13,6 +13,7 @@ var currentSale =0;
 var data = [
     ["Item ID", "Item Name", "Cost"]
 ];
+var items = 0;
 
 var totalSpent = 0;
 
@@ -38,16 +39,12 @@ function displayInventory() {
     connection.query("SELECT * FROM products", function (err, results) {
         if (err) throw err;
         for (i = 0; i < results.length; i++) {
-            // console.log("Item id: " + results[i].id + " item name: " + results[i].product_name + " $" + results[i].price + ".");
 
             data.push([results[i].id, results[i].product_name, ("$" + results[i].price)])
-            // if (i >= results.length) {
-            //     makePurchase();
-            // }
         }
+        items = results.length;
         var output = table(data)
         console.log(output);
-        // console.log("---------------------------------")
         makePurchase();
     })
 
@@ -62,7 +59,7 @@ function makePurchase() {
             type: "input",
             message: "Enter the ID of the item you would like to purchase:",
             validate: function (value) {
-                if (isNaN(value) === false && value < 26) {
+                if (isNaN(value) === false && value <= items) {
                     return true;
                 }
                 return false
@@ -101,11 +98,10 @@ function getFullId() {
 }
 function quantityUpdate() {
     if ((availableQuantity - purchaseQuantity) >= 0) {
-        currentSale = ((parseFloat(currentPrice)) * (parseFloat(purchaseQuantity)))
+        currentSale = ((parseFloat(currentPrice).toFixed(2)) * (parseFloat(purchaseQuantity).toFixed(2)))
         updatedQuantity = (availableQuantity - purchaseQuantity)
         totalSpent = totalSpent + currentSale;
         newSales = (productSales + currentSale);
-        console.log(newSales)
         connection.query("UPDATE products SET ? WHERE ?", [{
             stock_quantity: updatedQuantity,
             product_sales: newSales,
