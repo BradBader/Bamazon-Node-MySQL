@@ -11,7 +11,7 @@ var newSales = 0;
 var productSales;
 var currentSale =0;
 var data = [
-    ["Item ID", "Item Name", "Cost"]
+    ["Item ID", "Item Name", "Cost", "Quantity Available"]
 ];
 var items = 0;
 
@@ -40,7 +40,7 @@ function displayInventory() {
         if (err) throw err;
         for (i = 0; i < results.length; i++) {
 
-            data.push([results[i].id, results[i].product_name, ("$" + results[i].price)])
+            data.push([results[i].id, results[i].product_name, ("$" + results[i].price), + results[i].stock_quantity])
         }
         items = results.length;
         var output = table(data)
