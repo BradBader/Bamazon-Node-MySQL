@@ -8,7 +8,8 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 product_name VARCHAR(60) NOT NULL,
 department_name VARCHAR(50) NOT NULL,
 price FLOAT(6, 2) NOT NULL,
-stock_quantity INT(5) NOT NULL
+stock_quantity INT(5) NOT NULL,
+product_sales FLOAT(6, 2)
 );
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
