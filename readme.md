@@ -22,9 +22,9 @@
 Pulls data from a mysql database, updates inventory real time, keeps track of what you're spending.
 
 This project incorporates a few NPM packages including: <br>
-    **1)** mysql,<br>
+    **1)** mysql, <br>
     **2)** inquirer, <br>
-    **3)** table.<br>
+    **3)** table,<br>
 
 ## How to use it:
 
